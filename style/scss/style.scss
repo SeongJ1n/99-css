@@ -72,16 +72,40 @@ body {
 .animation-wrap ~ .animation-wrap { margin-left: 30px; }
 
 
+.animation-wrap.default {
+    .dot {
+        animation: xAxis-default 2s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
+        &:after {
+            animation: yAxis-default 2s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64);
+            background-color: #212529; // black
+        }
+    }
+    .xaxis-pointer { animation: xAxis-default 2s infinite cubic-bezier(0.02, 0.01, 0.21, 1); }
+    .yaxis-pointer { animation: yAxis-default 2s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64); }
+    @keyframes xAxis-default {
+        50% {
+            animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1);
+            transform: translateX(80px);
+        }
+    }
+    @keyframes yAxis-default {
+        50% {
+            animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64);
+            transform: translateY(-80px);
+        }
+    }
+}
+
 .animation-wrap.ease-io {
     .dot {
-        animation: xAxis-io 1s infinite ease-in;
+        animation: xAxis-io 2s infinite ease-in;
         &:after {
-            animation: yAxis-io 1s infinite ease-out;
+            animation: yAxis-io 2s infinite ease-out;
             background-color: #ff6b6b; // red
         }
     }
-    .xaxis-pointer { animation: xAxis-io 1s infinite ease-in; }
-    .yaxis-pointer { animation: yAxis-io 1s infinite ease-out; }
+    .xaxis-pointer { animation: xAxis-io 2s infinite ease-in; }
+    .yaxis-pointer { animation: yAxis-io 2s infinite ease-out; }
     @keyframes xAxis-io {
         50% {
             animation-timing-function: ease-out;
@@ -98,14 +122,14 @@ body {
 
 .animation-wrap.ease-oi {
     .dot {
-        animation: xAxis-oi 1s infinite ease-out;
+        animation: xAxis-oi 2s infinite ease-out;
         &:after {
-            animation: yAxis-oi 1s infinite ease-in;
+            animation: yAxis-oi 2s infinite ease-in;
             background-color: #f06595; // pink
         }
     }
-    .xaxis-pointer { animation: xAxis-oi 1s infinite ease-out; }
-    .yaxis-pointer { animation: yAxis-oi 1s infinite ease-in; }
+    .xaxis-pointer { animation: xAxis-oi 2s infinite ease-out; }
+    .yaxis-pointer { animation: yAxis-oi 2s infinite ease-in; }
     @keyframes xAxis-oi {
         50% {
             animation-timing-function: ease-in;
@@ -122,14 +146,14 @@ body {
 
 .animation-wrap.ease-c {
     .dot {
-        animation: xAxis-c 1s infinite cubic-bezier(0,0.5,0.5,0);
+        animation: xAxis-c 2s infinite cubic-bezier(0,0.5,0.5,0);
         &:after {
-            animation: yAxis-c 1s infinite ease-out;
+            animation: yAxis-c 2s infinite ease-out;
             background-color: #cc5de8; // pink
         }
     }
-    .xaxis-pointer { animation: xAxis-c 1s infinite cubic-bezier(0,0.5,0.5,0); }
-    .yaxis-pointer { animation: yAxis-c 1s infinite ease-out; }
+    .xaxis-pointer { animation: xAxis-c 2s infinite cubic-bezier(0,0.5,0.5,0); }
+    .yaxis-pointer { animation: yAxis-c 2s infinite ease-out; }
     @keyframes xAxis-c {
         50% {
             animation-timing-function: ease-out;
