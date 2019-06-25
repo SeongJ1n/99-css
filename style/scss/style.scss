@@ -1,0 +1,145 @@
+// SASS Import
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+@import 'ingredients/reset';;
+@import 'ingredients/flex';
+
+body {
+    min-height: 100vh;
+}
+
+.animation-wrap {
+    position: relative;
+    .dot {
+        z-index: 1;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        &:after {
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            content: '';
+        }
+    }
+
+    .xaxis-pointer,
+    .yaxis-pointer {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background-color: #ff922b;
+    }
+    .xaxis-pointer { bottom: -8px; }
+    .yaxis-pointer {
+        left: -8px;
+        bottom: 0;
+    }
+
+    .grid-wrap {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        .grid-line,
+        .grid-line-v {
+            position: absolute;
+            background-color: #ced4da;
+            opacity: 0.5;
+        }
+        .grid-line {
+            width: 100%;
+            height: 1px;
+        }
+        .grid-line-v {
+            width: 1px;
+            height: 100%;
+        }
+        // grid-line 스타일 적용
+        $total: 6;
+        @for $i from 1 to $total {
+            .grid-line.line-#{$i} { top: 20px * $i; }
+            .grid-line-v.line-#{$i} { left: 20px * $i; }
+        }
+    }
+    .title {
+        position: absolute;
+        bottom: -40px;
+        color: #868e96;
+        font-size: 13px;
+        letter-spacing: -.025em;
+    }
+}
+.animation-wrap ~ .animation-wrap { margin-left: 30px; }
+
+
+.animation-wrap.ease-io {
+    .dot {
+        animation: xAxis-io 1s infinite ease-in;
+        &:after {
+            animation: yAxis-io 1s infinite ease-out;
+            background-color: #ff6b6b; // red
+        }
+    }
+    .xaxis-pointer { animation: xAxis-io 1s infinite ease-in; }
+    .yaxis-pointer { animation: yAxis-io 1s infinite ease-out; }
+    @keyframes xAxis-io {
+        50% {
+            animation-timing-function: ease-out;
+            transform: translateX(80px);
+        }
+    }
+    @keyframes yAxis-io {
+        50% {
+            animation-timing-function: ease-in;
+            transform: translateY(-80px);
+        }
+    }
+}
+
+.animation-wrap.ease-oi {
+    .dot {
+        animation: xAxis-oi 1s infinite ease-out;
+        &:after {
+            animation: yAxis-oi 1s infinite ease-in;
+            background-color: #f06595; // pink
+        }
+    }
+    .xaxis-pointer { animation: xAxis-oi 1s infinite ease-out; }
+    .yaxis-pointer { animation: yAxis-oi 1s infinite ease-in; }
+    @keyframes xAxis-oi {
+        50% {
+            animation-timing-function: ease-in;
+            transform: translateX(80px);
+        }
+    }
+    @keyframes yAxis-oi {
+        50% {
+            animation-timing-function: ease-out;
+            transform: translateY(-80px);
+        }
+    }
+}
+
+.animation-wrap.ease-c {
+    .dot {
+        animation: xAxis-c 1s infinite cubic-bezier(0,0.5,0.5,0);
+        &:after {
+            animation: yAxis-c 1s infinite ease-out;
+            background-color: #cc5de8; // pink
+        }
+    }
+    .xaxis-pointer { animation: xAxis-c 1s infinite cubic-bezier(0,0.5,0.5,0); }
+    .yaxis-pointer { animation: yAxis-c 1s infinite ease-out; }
+    @keyframes xAxis-c {
+        50% {
+            animation-timing-function: ease-out;
+            transform: translateX(80px);
+        }
+    }
+    @keyframes yAxis-c {
+        50% {
+            animation-timing-function: cubic-bezier(0,0.5,0.5,0);
+            transform: translateY(-80px);
+        }
+    }
+}
